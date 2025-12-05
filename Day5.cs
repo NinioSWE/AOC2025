@@ -124,34 +124,5 @@ namespace AOC1
 
             Console.WriteLine($"Second Solution: {sumOfGoodFood}");
         }
-
-
-        private static bool HasOnly4OrLessNeighbors2(int y, int x, (bool,bool)[,] grid)
-        {
-            List<(int, int)> neighbors = new List<(int, int)>();
-            neighbors.Add((y - 1, x - 1));
-            neighbors.Add((y - 1, x));
-            neighbors.Add((y - 1, x + 1));
-            neighbors.Add((y, x - 1));
-            neighbors.Add((y, x + 1));
-            neighbors.Add((y + 1, x - 1));
-            neighbors.Add((y + 1, x));
-            neighbors.Add((y + 1, x + 1));
-
-            int i = 0;
-            foreach (var neighbor in neighbors)
-            {
-                if (IsValidIndex2(neighbor.Item1, neighbor.Item2, grid) && grid[neighbor.Item1, neighbor.Item2].Item1)
-                {
-                    i++;
-                }
-            }
-            return (i < 4);
-        }
-
-        private static bool IsValidIndex2(int y, int x, (bool,bool)[,] grid)
-        {
-            return (y >= 0 && x >= 0 && y < grid.GetLength(0) && x < grid.GetLength(1));
-        }
     }
 }
